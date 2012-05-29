@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-{p class="notice">%= notice %>/p}
-{p class=alert">%= alert %>/p}
+
 <html>
 <head>
   <title>Blog</title>
@@ -9,8 +8,15 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<p>huidige taal: <%= I18n.locale %></p>
+<p class="notice"><%= notice %></p>
+<p class=alert"><%= alert %></p>
+  <% if current_user %>
+  <%= link_to t("logout"),destroy_user_session_path, :method => :delete %>
 
-<%= yield %>
+    <% end -%>
+  
+  <%= yield %>
 
 </body>
 </html>
